@@ -20,7 +20,7 @@
 
 	<h2 class="title">My Lead Assistant Embed Code</h2>
 
-	<p><label for="jscode">Please enter the embed code provided by your My Lead Assistant Application here.</label></p>
+	<p><label for="myleadassistant_script">Please enter the embed code provided by your My Lead Assistant Application here.</label></p>
 
 	<textarea name="myleadassistant_script" id="jscode" class="large-text code" rows="3"><?php echo get_option( 'myleadassistant_script' );?></textarea>
 
