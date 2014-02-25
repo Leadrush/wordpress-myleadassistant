@@ -1,18 +1,12 @@
-=== My Lead Assistant Wordpress Plugin ===
-Tags: comments, spam
-Requires at least: 3.5.1
-Tested up to: 3.6
-Stable tag: 1.0.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+# My Lead Assistant Wordpress Plugin
 
 This little plugin allow you to add your my Lead Assistant embed code easilly in your wordpress site.
 
-== Installation ==
+### Installation
 
 This section describes how to install the plugin and get it working.
 
-= Uploading in WordPress Dashboard =
+### Uploading in WordPress Dashboard
 
 1. Navigate to the 'Add New' in the plugins dashboard
 2. Navigate to the 'Upload' area
@@ -20,7 +14,7 @@ This section describes how to install the plugin and get it working.
 4. Click 'Install Now'
 5. Activate the plugin in the Plugin dashboard
 
-= Using FTP =
+### Using FTP
 
 1. Download `my-lead-assistant.zip`
 2. Extract the `my-lead-assistant` directory to your computer
@@ -28,12 +22,9 @@ This section describes how to install the plugin and get it working.
 4. Activate the plugin in the Plugin dashboard
 
 
-== Changelog ==
-
-= 1.0 =
+#### Changelog
+```
+1.0 on 25/02/2013
 * First version released
+```
 
-== Upgrade Notice ==
-
-= 1.0 =
-First release
