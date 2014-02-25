@@ -6,6 +6,8 @@ This little plugin allow you to add your my Lead Assistant embed code easilly in
 
 This section describes how to install the plugin and get it working.
 
+[Click here to download latest version](https://github.com/Leadrush/wordpress-myleadassistant/archive/master.zip)
+
 ### Uploading in WordPress Dashboard
 
 1. Navigate to the 'Add New' in the plugins dashboard
