@@ -23,6 +23,7 @@ class My_Lead_Assistant_Admin {
 		$this->plugin_slug = $plugin->get_plugin_slug();
 
 		add_action( 'admin_init', array( $this, 'myleadassistant_init' ) );
+		add_action( 'plugins_loaded', array( $this, 'myleadassistant_git_updater' ) );
 
 		// Load admin style sheet and JavaScript.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
@@ -37,6 +38,13 @@ class My_Lead_Assistant_Admin {
 
 
 
+	}
+
+	function myleadassistant_git_updater() {
+	    if ( is_admin() && !class_exists( 'GPU_Controller' ) ) {
+	        require_once dirname( __FILE__ ) . '/git-plugin-updates/git-plugin-updates.php';
+	        add_action( 'plugins_loaded', 'GPU_Controller::get_instance', 20 );
+	    }
 	}
 
 	public function myleadassistant_init() {
