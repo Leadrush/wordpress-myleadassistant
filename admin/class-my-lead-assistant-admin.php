@@ -42,6 +42,9 @@ class My_Lead_Assistant_Admin {
 
 
 	public function myleadassistant_init() {
+		
+		// Check for wp_footer
+		$this->check_footer();
 		register_setting( 'mla-settings-group', 'myleadassistant_script' );
 	}
 
@@ -110,6 +113,42 @@ class My_Lead_Assistant_Admin {
 
 	}
 
+	protected function check_footer() {
 
+		$has_footer = false;
+		
+		$needle = 'wp_footer()';
+		$footer_file = get_template_directory() . '/footer.php';
+		$footer_content = file_get_contents($footer_file);
+		if (strpos($footer_content,$needle) === FALSE) {
+
+			// check index.php file
+			$index_file = get_template_directory() . '/index.php';
+			$index_content = file_get_contents($index_file);
+			if (strpos($index_content,$needle) !== FALSE)
+				$has_footer = true;
+			
+		} else
+			$has_footer = true;
+		
+		// If we found errors with the existence of wp_footer, hook into admin_notices to complain about it
+		if ( ! $has_footer )
+			add_action ( 'admin_notices', array($this,'test_footer_notices') );
+	}
+
+	// Output the notices
+	public function test_footer_notices() {
+ 		
+		// If we made it here it is because there were errors
+		
+		// only display notice on plugin settings page
+		global $pagenow;
+		if ( $pagenow == 'options-general.php' && isset($_GET['page']) && $_GET['page'] == $this->plugin_slug) {
+				
+			echo '<div class="error"><p><strong>Your active theme is not compatible with this plugin.<br>
+			It does not call wp_footer().<br>
+			Please contact your theme creator.</strong></p></div>';
+		}
+	}
 
 }
