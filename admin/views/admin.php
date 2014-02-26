@@ -31,6 +31,13 @@
 	
 	<p><label><input type="radio" id="radio_off" name="pages_radio"<? echo (($off_pages = get_option( 'myleadassistant_off_pages' ))?' checked':null) ?>> To exclude the widget from specific pages (but display on all others), enter the page titles below, one per line:</label></p>
 	<textarea id="off_pages" name="myleadassistant_off_pages" style="height:150px;resize:none;" class="regular-text"<? echo ($off_pages?null:' disabled') ?>><?php echo $off_pages ?></textarea>
+	
+	<br><br><span class="description">
+	Note: Do not include the file extension (like .php), quotation marks, or any other punctuation,<br>
+	just the title of the page as it appears in the list of pages in the admin panel.
+	<pre>Example:
+  Sample Page
+  Another Sample Page</pre></span>
 
 	<?php submit_button(); ?>
 
