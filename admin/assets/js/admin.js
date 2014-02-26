@@ -8,6 +8,10 @@
 			radio_on: 'on_pages',
 			radio_off: 'off_pages'
 		},
+		overlay_to_page = {
+			overlay_on_pages: 'radio_on',
+			overlay_off_pages: 'radio_off'
+		},
 		page_change = {
 			radio_on: 'radio_off',
 			radio_off: 'radio_on'
@@ -27,8 +31,8 @@
 					position: 'absolute',
 					top: $this.position().top,
 					left: $this.position().left,
-					width: $this.outerWidth(),
-					height: $this.outerHeight(),
+					width: $this.outerWidth() + 40,
+					height: $this.outerHeight() + 40,
 					zIndex: zi,
 					backgroundColor: '#fff',
 					opacity: 0,
@@ -56,7 +60,7 @@
 			
 		});
 		$('.r-overlay').click(function() {
-			$('[name=pages_radio]').not(':checked').prop('checked',true).change();
+			$('#'+overlay_to_page[$(this).attr('id')]).prop('checked',true).change();
 		});
 		
 	});
