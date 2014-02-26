@@ -141,11 +141,47 @@ class My_Lead_Assistant {
 
 	public function enqueue_scripts() {
 		
+		$show_here = true;
+		global $post;
+		
+		$on_pages = get_option( 'myleadassistant_on_pages' );
+		$off_pages = get_option( 'myleadassistant_off_pages' );
+		
 		$value = get_option( 'myleadassistant_script' );
-		if (isset($value) && !empty($value)) {
+		
+		if (isset($on_pages) && !empty($on_pages)) {
+			
+			$on_pages = preg_split('/\r\n|\n|\r/', $on_pages);
+			
+			if (is_array($on_pages)) {
+				
+				array_walk($on_pages, 'trim');
+			
+				if (!$this->in_arrayi($post->post_title,$on_pages))
+					$show_here = false;
+			}
+		} else if (isset($off_pages) && !empty($off_pages)) {
+			
+			$off_pages = preg_split('/\r\n|\n|\r/', $off_pages);
+			
+			if (is_array($off_pages)) {
+				
+				array_walk($off_pages, 'trim');
+			
+				if ($this->in_arrayi($post->post_title,$off_pages))
+					$show_here = false;
+			}
+		} 
+		
+		if ($show_here && isset($value) && !empty($value)) {
 			echo $value;
 		}
 		
+	}
+	
+	private function in_arrayi($needle, $haystack) {
+    	
+    	return in_array(strtolower($needle), array_map('strtolower', $haystack));
 	}
 
 }

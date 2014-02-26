@@ -46,6 +46,8 @@ class My_Lead_Assistant_Admin {
 		// Check for wp_footer
 		$this->check_footer();
 		register_setting( 'mla-settings-group', 'myleadassistant_script' );
+		register_setting( 'mla-settings-group', 'myleadassistant_on_pages' );
+		register_setting( 'mla-settings-group', 'myleadassistant_off_pages' );
 	}
 
 	public static function get_instance() {

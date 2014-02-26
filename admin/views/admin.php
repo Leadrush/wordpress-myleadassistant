@@ -22,7 +22,15 @@
 
 	<p><label for="myleadassistant_script">Please enter the embed code provided by your My Lead Assistant Application here.</label></p>
 
-	<textarea name="myleadassistant_script" id="jscode" class="large-text code" rows="3"><?php echo get_option( 'myleadassistant_script' );?></textarea>
+	<textarea name="myleadassistant_script" id="jscode" class="large-text code" style="width:676px;height:350px"><?php echo get_option( 'myleadassistant_script' );?></textarea>
+	
+	<p>By Default, the widget is embedded on all pages.</p>
+	
+	<p><label><input type="radio" id="radio_on" name="pages_radio"<? echo (($on_pages = get_option( 'myleadassistant_on_pages' ))?' checked':null) ?>> To enable the widget on specific pages only, enter the page titles below, one per line:</label></p>
+	<textarea id="on_pages" name="myleadassistant_on_pages" style="height:150px;resize:none;" class="regular-text"<? echo ($on_pages?null:' disabled') ?>><?php echo $on_pages ?></textarea>
+	
+	<p><label><input type="radio" id="radio_off" name="pages_radio"<? echo (($off_pages = get_option( 'myleadassistant_off_pages' ))?' checked':null) ?>> To exclude the widget from specific pages (but display on all others), enter the page titles below, one per line:</label></p>
+	<textarea id="off_pages" name="myleadassistant_off_pages" style="height:150px;resize:none;" class="regular-text"<? echo ($off_pages?null:' disabled') ?>><?php echo $off_pages ?></textarea>
 
 	<?php submit_button(); ?>
 
